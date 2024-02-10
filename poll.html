@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class = "heading"></div>
+    <h1 class="title">Рожден ден Ели. Гласуване за напитки.</h1>
+        <div class="poll-container">
+            <h2 class="question">Какво ще пиеш на рождения ден</h2>
+            <form id="pollForm">
+                <input type="radio" id="option1" name="poll" value="Уиски"><label for="option1">Уиски</label><br>
+                <input type="radio" id="option2" name="poll" value="Вино"><label for="option2">Вино</label><br>
+                <input type="radio" id="option3" name="poll" value="Ракия"><label for="option3">Ракия</label><br>
+                <input type="radio" id="option4" name="poll" value="Джин"><label for="option4">Джин</label><br>
+                <input type="radio" id="option5" name="poll" value="Ром"><label for="option5">Ром</label><br>
+                <input type="radio" id="option6" name="poll" value="Бира"><label for="option6">Бира</label><br><br>
+                <button type="button" onclick="submitPoll()">Submit</button>
+            </form>
+            <div id="voteMessage"></div>
+            <div id="pollResult"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
