@@ -1,3 +1,7 @@
+html {
+    background: linear-gradient(300deg, #5bbedf, #4cffff, #4780c0);
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
