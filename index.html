@@ -25,5 +25,24 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+      
+        // Web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDPKfljlgG5ZILuivVTJgY0sG37WhX5ShE",
+          authDomain: "pollelly.firebaseapp.com",
+          projectId: "pollelly",
+          storageBucket: "pollelly.appspot.com",
+          messagingSenderId: "653621607694",
+          appId: "1:653621607694:web:453a3a40f4f82177dbeb5f",
+          measurementId: "G-SJ7K4MF3GC"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
 </body>
 </html>
