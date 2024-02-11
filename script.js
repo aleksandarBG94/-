@@ -1,55 +1,35 @@
 function submitPoll() {
     const selectedOption = document.querySelector('input[name="poll"]:checked');
-    const voteMessageContainer = document.getElementById('voteMessage'); // A container for vote messages.
+    const voteMessageContainer = document.getElementById('voteMessage');
 
     if (!selectedOption) {
         voteMessageContainer.innerHTML = "Моля изберете отговор.";
         return;
     }
 
-    let lastVote = localStorage.getItem('lastVote');
-    let votes = JSON.parse(localStorage.getItem('votes')) || {
-        'Уиски': 0,
-        'Вино': 0,
-        'Ракия': 0,
-        'Джин': 0,
-        'Ром': 0,
-        'Бира': 0
-    };
+    const voteOption = selectedOption.value;
+    const votesRef = firebase.database().ref('votes/' + voteOption);
 
-    if (lastVote) {
-        if (lastVote === selectedOption.value) {
-            voteMessageContainer.innerHTML = "Вече сте гласували за тази опция.";
-            displayResults(); // Ensure results are always displayed
-            return;
-        } else {
-            votes[lastVote]--;
-        }
-    }
+    // Increment the vote count for the selected option
+    votesRef.transaction(currentVotes => {
+        return (currentVotes || 0) + 1;
+    });
 
-    votes[selectedOption.value]++;
-    localStorage.setItem('lastVote', selectedOption.value);
-    localStorage.setItem('votes', JSON.stringify(votes));
-
-    displayResults(); // Update and display results
-    voteMessageContainer.innerHTML = "Благодаря за гласуването! :)"; // Update message without hiding results
+    voteMessageContainer.innerHTML = "Благодаря за гласуването! :)";
 }
 
 function displayResults() {
-    let votes = JSON.parse(localStorage.getItem('votes')) || {
-        'Уиски': 0,
-        'Вино': 0,
-        'Ракия': 0,
-        'Джин': 0,
-        'Ром': 0,
-        'Бира': 0
-    };
-    let resultText = 'Резултати:<br><br>';
-    for (const option in votes) {
-        resultText += `${option}: ${votes[option]} votes<br>`;
-    }
-    
-    document.getElementById('pollResult').innerHTML = resultText;
+    const votesRef = firebase.database().ref('votes');
+    votesRef.on('value', snapshot => {
+        const votes = snapshot.val();
+        let resultText = 'Резултати:<br><br>';
+        const options = ['Уиски', 'Вино', 'Ракия', 'Джин', 'Ром', 'Бира']; // Add all the options you have
+        options.forEach(option => {
+            const voteCount = votes && votes[option] ? votes[option] : 0;
+            resultText += `${option}: ${voteCount} votes<br>`;
+        });
+        document.getElementById('pollResult').innerHTML = resultText;
+    });
 }
 
 document.addEventListener('DOMContentLoaded', displayResults);
