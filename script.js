@@ -18,7 +18,7 @@ export function submitPoll(db) {
     voteMessageContainer.innerHTML = "Благодаря за гласуването! :)";
 }
 
-export function displayResults() {
+export function displayResults(db) {
     const votesRef = firebase.database().ref('votes');
     votesRef.on('value', snapshot => {
         const votes = snapshot.val();
