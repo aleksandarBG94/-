@@ -18,7 +18,7 @@
                 <input type="radio" id="option4" name="poll" value="Джин"><label for="option4">Джин</label><br>
                 <input type="radio" id="option5" name="poll" value="Ром"><label for="option5">Ром</label><br>
                 <input type="radio" id="option6" name="poll" value="Бира"><label for="option6">Бира</label><br><br>
-                <button type="button" onclick="submitPoll()">Submit</button>
+                <button id="submitPollButton" type="button">Submit</button>
             </form>
             <div id="voteMessage"></div>
             <div id="pollResult"></div>
@@ -29,8 +29,9 @@
         import { submitPoll, displayResults } from './script.js';
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
       
-        // Web app's Firebase configuration
+        // Wb app's Firebase configuration
         const firebaseConfig = {
           apiKey: "AIzaSyDPKfljlgG5ZILuivVTJgY0sG37WhX5ShE",
           authDomain: "pollelly.firebaseapp.com",
