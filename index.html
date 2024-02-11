@@ -7,49 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class = "heading"></div>
+    <div class="heading"></div>
     <h1 class="title">Рожден ден Ели. Гласуване за напитки.</h1>
-        <div class="poll-container">
-            <h2 class="question">Какво ще пиеш на рождения ден</h2>
-            <form id="pollForm">
-                <input type="radio" id="option1" name="poll" value="Уиски"><label for="option1">Уиски</label><br>
-                <input type="radio" id="option2" name="poll" value="Вино"><label for="option2">Вино</label><br>
-                <input type="radio" id="option3" name="poll" value="Ракия"><label for="option3">Ракия</label><br>
-                <input type="radio" id="option4" name="poll" value="Джин"><label for="option4">Джин</label><br>
-                <input type="radio" id="option5" name="poll" value="Ром"><label for="option5">Ром</label><br>
-                <input type="radio" id="option6" name="poll" value="Бира"><label for="option6">Бира</label><br><br>
-                <button id="submitPollButton" type="button">Submit</button>
-            </form>
-            <div id="voteMessage"></div>
-            <div id="pollResult"></div>
-        </div>
+    <div class="poll-container">
+        <h2 class="question">Какво ще пиеш на рождения ден</h2>
+        <form id="pollForm">
+            <input type="radio" id="option1" name="poll" value="Уиски"><label for="option1">Уиски</label><br>
+            <input type="radio" id="option2" name="poll" value="Вино"><label for="option2">Вино</label><br>
+            <input type="radio" id="option3" name="poll" value="Ракия"><label for="option3">Ракия</label><br>
+            <input type="radio" id="option4" name="poll" value="Джин"><label for="option4">Джин</label><br>
+            <input type="radio" id="option5" name="poll" value="Ром"><label for="option5">Ром</label><br>
+            <input type="radio" id="option6" name="poll" value="Бира"><label for="option6">Бира</label><br><br>
+            <button id="submitPollButton" type="button">Submit</button>
+        </form>
+        <div id="voteMessage"></div>
+        <div id="pollResult"></div>
     </div>
     <script src="script.js"></script>
-    <script type="module" src="script.js">
-        import { submitPoll, displayResults } from './script.js';
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
-        import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-      
-        // Wb app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyDPKfljlgG5ZILuivVTJgY0sG37WhX5ShE",
-          authDomain: "pollelly.firebaseapp.com",
-          databaseURL: "https://pollelly-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "pollelly",
-          storageBucket: "pollelly.appspot.com",
-          messagingSenderId: "653621607694",
-          appId: "1:653621607694:web:453a3a40f4f82177dbeb5f",
-          measurementId: "G-SJ7K4MF3GC"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-        const analytics = getAnalytics(app);
-
-        document.getElementById('submitPollButton').addEventListener('click', () => submitPoll(db));
-        //document.addEventListener('DOMContentLoaded', () => displayResults(db));
-      </script>
 </body>
 </html>
