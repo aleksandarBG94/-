@@ -1,4 +1,4 @@
-function submitPoll() {
+export function submitPoll() {
     const selectedOption = document.querySelector('input[name="poll"]:checked');
     const voteMessageContainer = document.getElementById('voteMessage');
 
@@ -18,12 +18,12 @@ function submitPoll() {
     voteMessageContainer.innerHTML = "Благодаря за гласуването! :)";
 }
 
-function displayResults() {
+export function displayResults() {
     const votesRef = firebase.database().ref('votes');
     votesRef.on('value', snapshot => {
         const votes = snapshot.val();
         let resultText = 'Резултати:<br><br>';
-        const options = ['Уиски', 'Вино', 'Ракия', 'Джин', 'Ром', 'Бира']; // Add all the options you have
+        const options = ['Уиски', 'Вино', 'Ракия', 'Джин', 'Ром', 'Бира'];
         options.forEach(option => {
             const voteCount = votes && votes[option] ? votes[option] : 0;
             resultText += `${option}: ${voteCount} votes<br>`;
